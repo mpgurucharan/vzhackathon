@@ -5,6 +5,7 @@ import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.trees.TypedDependency;
 import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.ling.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -42,9 +43,11 @@ public class Extract {
     private static Pattern TryExtractPattern(TypedDependency dependency) {
         String rel = dependency.reln().toString();
         String gov = dependency.gov().value();
-        String govTag = dependency.gov().label().tag();
+        //String govTag = dependency.gov().label().tag();
+        String govTag = dependency.gov().backingLabel().tag();
         String dep = dependency.dep().value();
-        String depTag = dependency.dep().label().tag();
+        //String depTag = dependency.dep().label().tag();
+        String depTag = dependency.dep().backingLabel().tag();
 
         Pattern.Relation relation = Pattern.asRelation(rel);
         if (relation != null) {

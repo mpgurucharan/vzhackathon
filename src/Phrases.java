@@ -17,7 +17,8 @@ public class Phrases {
     public Phrases() {
         try {
             mongoClient = new MongoClient(new MongoClientURI(MongoUri));
-        } catch (UnknownHostException e) {
+        //} catch (UnknownHostException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         database = mongoClient.getDB(Database);

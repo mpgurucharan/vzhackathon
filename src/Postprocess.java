@@ -25,7 +25,8 @@ public class Postprocess {
         for (Pattern pattern : patterns) {
             Annotation annotation = pipeline.process(pattern.toSentences());
             for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
-                    Tree tree = sentence.get(SentimentCoreAnnotations.AnnotatedTree.class);
+                    //Tree tree = sentence.get(SentimentCoreAnnotations.AnnotatedTree.class);
+                    Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
                     int sentiment = RNNCoreAnnotations.getPredictedClass(tree);
                     for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)) {
                         String lemma = token.get(CoreAnnotations.LemmaAnnotation.class);
